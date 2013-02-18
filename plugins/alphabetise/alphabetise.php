@@ -5,10 +5,11 @@
 // -----
 // Russ Baldwin 
 // shoesforindustry.net
-// v0.0.2
+// v0.0.3
 // -----
 function alphabetise($parent, $options=array()) {
-  // default values
+  
+// default key values
   $defaults = array('key'=> 'title');
   
   // merge defaults and options
@@ -21,6 +22,9 @@ function alphabetise($parent, $options=array()) {
           $temp = strtolower($temp);
           $array[$temp][] = $item;
   }
+
+// Check to see array is not empty
+if ( (!empty ($array)) )  {  
   //Gets the stuff into a two dimensional array
   foreach ($array as $temp => $item){
           if (count($item) == 1){
@@ -28,6 +32,17 @@ function alphabetise($parent, $options=array()) {
                   unset ($array[$temp]);
           }
   }
+  
+  // All OK $array will be returened
+  
+  } else {
+  // A Problem so set $array with error message and return
+  $array = array(
+      "Alphabetise Plugin Error: Problem with array or invalid key!
+       Make sure your array is valid, not empty & that the key is valid for this type of array.  (You can probably ignore the errors after this point, until this error has been resolved.)" => "Error"
+  );
+  
+}
   return $array;
 }
 ?>

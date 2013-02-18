@@ -1,4 +1,4 @@
-# Alphabetise Plugin 0.0.2 
+# Alphabetise Plugin 0.0.3 
 
 ## What is it?
 
