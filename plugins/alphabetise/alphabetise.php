@@ -1,6 +1,12 @@
 <?php
-
-//See reademe
+// The Alphabetise plugin for Kirby CMS will Alphabetise a given page array or tag array 
+// and return it for further processing/display
+// See readme for further information
+// -----
+// Russ Baldwin 
+// shoesforindustry.net
+// v0.0.2
+// -----
 function alphabetise($parent, $options=array()) {
   // default values
   $defaults = array('key'=> 'title');
