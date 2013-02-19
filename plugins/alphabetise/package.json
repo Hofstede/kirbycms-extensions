@@ -1,0 +1,10 @@
+{
+    "name": "alphabetise",
+    "readable": "Alphabetise",
+    "version": "0.0.3",
+    "stable": true,
+    "description": "Alphabetise a given Kirby CMS page array or tag array and return.",
+    "author": "Russ Bladwin",
+    "url": "http://shoesforindustry.net"
+}
+

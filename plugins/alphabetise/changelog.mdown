@@ -1,0 +1,11 @@
+# Changelog
+
+## v0.0.3
++ Documentation updates
+
+## v0.0.2
++ Code errors added 
++ Documentation updates
+
+## v0.0.1
++ Initial release
