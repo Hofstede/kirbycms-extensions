@@ -1,44 +1,70 @@
-# Alphabetise Plugin 0.0.3 
+# Alphabetise Plugin
 
 ## What is it?
 
-The Alphabetise plugin will Alphabetise a given page array or tag array and return it for further processing/display as a two dimensional array.
+The Alphabetise plugin will Alphabetise a given *page* array or *tag* array and return it for further processing/display as an array.
 
 ## Installation 
 
-Put the alphabetise.php and alphabetise.mdown files in your site/plugins/alphabetise folder. 
+Put the **alphabetise.php** and **alphabetise.mdown** files in your **site/plugins/alphabetise** folder. 
 
 ## How to use it?
 
-In your template call, it like this:
+####Example 1: Alphabetical list of child pages using page title as the key:
+#####A
++ Aa page
++ Ab page
 
-####Example 1: Alphabetical list of child pages using page title as the key
+---
+
+#####B
++ Ba page
++ Bb page
+
+---
+
+In your template call, it like this:
 
     <?php $alphabetise = alphabetise($page->children()->visible(), array('key' => 'title')); ?>
 
-The first argument you pass is the array you want to alphabetise. The second array 'key' argument is so you can set what you want to Alphabetise by. It should be a string like a page 'title'.
+*The first argument you pass is the **page** array you want to alphabetise. The second array 'key' argument is so you can set what you want to Alphabetise by. It should be a string like a page 'title'.*
 
 You then want to loop through the returned results and display them for example:
 
-
-    <?php foreach($alphabetise as $letter => $items): ?>
-	<h4><?php echo strtoupper($letter) ?></h4>
-	<ul>
-	    <?php foreach($items as $item): ?>
-     	     <li><a href="<?php echo $item->url()?>"><?php echo $item->title()?></a></li>
-     	   <?php endforeach ?>
-     	</ul>
-       <hr/>
-    <?php endforeach ?>
+<?php foreach($alphabetise as $letter => $items): ?>
+  <h4><?php echo strtoupper($letter) ?></h4>
+  <ul>
+      <?php foreach($items as $item): ?>
+     	     <li>
+     	         <a href="<?php echo $item->url()?>">
+     	            <?php echo $item->title()?>
+     	         </a>
+     	     </li>
+     	   <?php endforeach ?> 
+    </ul>
+   <hr/>
+<?php endforeach ?>
 
 
 ####Example2: Alphabetical list of tags using tag name as the key 
 
-**You require the tag plugin for this bit to work!** and 'pages' in this example are the pages you want to get tags for. See the taglcoud plugin documentation for more information.
+#####A
++ Aa tag
++ Ab tag
+
+---
+
+#####B
++ Ba tag
++ Bb tag
+
+**You require the tag plugin for this bit to work!** and 'pages' in this example are the pages you want to get tags for. See the [taglcoud plugin documentation](https://github.com/bastianallgeier/kirbycms-extensions/blob/master/plugins/tagcloud/tagcloud.php) for more information.
+
+In your template call, it like this:
 
     <?php $alphabetise = alphabetise(tagcloud(($pages->find('pages')), array('sort' => 'name','sortdir'  => 'asc')), array('key' => 'name')); ?>
 
-The first argument you pass is the tagcloud array you want to alphabetise. The second array 'key' argument is so you can set what you want to alphabetise by. It should be a string like a tag 'name'.
+*The first argument you pass is the **tagcloud** array you want to alphabetise. The second array 'key' argument is so you can set what you want to alphabetise by. It should be a string like a tag 'name'.*
 
 You then want to loop through the returned results and display them for example:
 (Note we are using **$item->name** not *item->title* as tags don't have titles.)
@@ -47,7 +73,11 @@ You then want to loop through the returned results and display them for example:
 	<h4><?php echo strtoupper($letter) ?></h4>
 	<ul>
 	    <?php foreach($items as $item): ?>
-     	     <li><a href="<?php echo $item->url()?>"><?php echo $item->name()?></a></li>
+     	     <li>
+     	         <a href="<?php echo $item->url()?>">
+     	         <?php echo $item->name()?>
+     	         </a>
+     	     </li>
      	   <?php endforeach ?>
      	</ul>
        <hr/>
@@ -56,7 +86,11 @@ You then want to loop through the returned results and display them for example:
 
 You can use any valid array element. So for tabs you can use also add **$item->results()** for example, which is the number of items with that tag:
 
-    <li><a href="<?php echo $item->url()?>"><?php echo $item->name().' ('.($item->results()).')'?></a></li>
+    <li>
+        <a href="<?php echo $item->url()?>">
+        <?php echo $item->name().' ('.($item->results()).')'?>
+        </a>
+    </li>
 	    
 ## Author
 Russ Baldwin  
