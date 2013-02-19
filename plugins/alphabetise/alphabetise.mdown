@@ -25,9 +25,9 @@ Put the **alphabetise.php** and **alphabetise.mdown** files in your **site/plugi
 
 In your template call, it like this:
 ```php
-    <?php $alphabetise = alphabetise($page->children()->visible(), array('key' => 'title')); ?>
+<?php $alphabetise = alphabetise($page->children()->visible(), array('key' => 'title')); ?>
 ```
-The first argument you pass is the **page** array you want to alphabetise. The second array 'key' argument is so you can set what you want to Alphabetise by. It should be a string like a page 'title'.
+The first argument you pass is the **page** array you want to *alphabetise*. The second array **key** argument is so you can set what you want to *alphabetise* by. It should be a string like a page 'title'.
 
 You then want to loop through the returned results and display them for example:
 ```php
@@ -58,30 +58,32 @@ You then want to loop through the returned results and display them for example:
 + Ba tag
 + Bb tag
 
-**You require the tag plugin for this bit to work!** and 'pages' in this example are the pages you want to get tags for. See the [taglcoud plugin documentation](https://github.com/bastianallgeier/kirbycms-extensions/blob/master/plugins/tagcloud/tagcloud.php) for more information.
+**You require the tag plugin for this bit to work!** and *'pages'* in this example are the *pages* you want to get *tags* for.  
+(See the [taglcoud plugin documentation](https://github.com/bastianallgeier/kirbycms-extensions/blob/master/plugins/tagcloud/tagcloud.php) for more information.)
 
 In your template call it like this:
 ```php
-    <?php $alphabetise = alphabetise(tagcloud(($pages->find('pages')), array('sort' => 'name','sortdir'  => 'asc')), array('key' => 'name')); ?>
+<?php $alphabetise = alphabetise(tagcloud(($pages->find('pages')), array('sort' => 'name','sortdir'  => 'asc')), array('key' => 'name')); ?>
 ```
 
 *The first argument you pass is the **tagcloud** array you want to alphabetise. The second array 'key' argument is so you can set what you want to alphabetise by. It should be a string like a tag 'name'.*
 
 You then want to loop through the returned results and display them for example. Note we are using **$item->name** not *item->title* as tags don't have titles:
+
 ```php
-    <?php foreach($alphabetise as $letter => $items): ?>
-	<h4><?php echo strtoupper($letter) ?></h4>
-	<ul>
-	    <?php foreach($items as $item): ?>
+<?php foreach($alphabetise as $letter => $items): ?>
+  <h4><?php echo strtoupper($letter) ?></h4>
+    <ul>
+      <?php foreach($items as $item): ?>
      	     <li>
      	         <a href="<?php echo $item->url()?>">
      	         <?php echo $item->name()?>
      	         </a>
      	     </li>
      	   <?php endforeach ?>
-     	</ul>
-       <hr/>
-    <?php endforeach ?>
+    </ul>
+  <hr/>
+<?php endforeach ?>
 ```
 
 You can use any valid array element. So for tabs you can use also add **$item->results()** for example, which is the number of items with that tag:
