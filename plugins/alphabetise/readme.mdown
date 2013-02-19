@@ -59,7 +59,7 @@ You then want to loop through the returned results and display them for example:
 + Bb tag
 
 **You require the tag plugin for this bit to work!** and *'pages'* in this example are the *pages* you want to get *tags* for.  
-(See the [taglcoud plugin documentation](https://github.com/bastianallgeier/kirbycms-extensions/blob/master/plugins/tagcloud/tagcloud.php) for more information.)
+(See the [taglcoud plugin documentation](https://github.com/bastianallgeier/kirbycms-extensions/blob/master/plugins/tagcloud) for more information.)
 
 In your template call it like this:
 ```php
