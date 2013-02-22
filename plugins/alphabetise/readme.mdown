@@ -90,7 +90,7 @@ You then want to loop through the returned results and display, note we are usin
 <?php endforeach ?>
 ```
 
-You can use any valid array element, so for tabs you can use also add **$item->results()** for example, which is the number of items with that tag:
+You can use any valid array element, so for tags you can use also add **$item->results()** for example, which is the number of items with that tag:
 ```php
     <li>
         <a href="<?php echo $item->url()?>">
