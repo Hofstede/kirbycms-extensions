@@ -14,10 +14,10 @@ function alphabetise($parent, $options=array()) {
   
   // merge defaults and options
   $options = array_merge($defaults, $options);  
-  
+
   //Gets the stuff into a two dimensional array
   foreach ($parent as $item){
-          $temp = explode(' ',$item->$options['key']() );
+          $temp = explode('~',$item->$options['key']() );
           $temp = $temp[0];
           $temp = strtolower($temp);
           $array[$temp][] = $item;
@@ -32,7 +32,7 @@ if ( (!empty ($array)) )  {
                   unset ($array[$temp]);
           }
   }
-  
+
   // All OK $array will be returened
   
   } else {

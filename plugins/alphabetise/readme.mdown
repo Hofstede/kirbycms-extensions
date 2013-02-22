@@ -2,7 +2,11 @@
 
 ## What is it?
 
-The Alphabetise plugin will alphabetise a given [Kirby CMS](http://getkirby.com/) *page* array or *tag* array and return it for further processing/display as an alphabetised array.
+The Alphabetise plugin will alphabetise a given [Kirby CMS](http://getkirby.com/) *page* array or *tag* array and return it for further processing/display as an alphabetised array. 
+
+*The array whose key your are trying to sort on should of course only contain letters of the alphabet, if not problems may occur.* 
+
+*Also the code (explode) uses a '~' tilde, if you use this in your key, especially at the begining of the string, then you could run into sorting problems. You could of course manually change it if required.*
 
 ## Installation 
 
@@ -25,9 +29,9 @@ Put the **alphabetise.php** and **alphabetise.mdown** files in your **site/plugi
 
 In your template call, it like this:
 ```php
-<?php $alphabetise = alphabetise($page->children()->visible(), array('key' => 'title')); ?>
+<?php $alphabetise = alphabetise($page->children()->visible()->sortby('title'), array('key' => 'title')); ?>
 ```
-The first argument you pass is the **page** array you want to *alphabetise*. The second array **key** argument is so you can set what you want to *alphabetise* by. It should be a string like a page 'title'.
+The first argument you pass is the sorted **page** array you want to *alphabetise*. The second array **key** argument is so you can set what you want to *alphabetise* by. It should be a string like a page 'title'.
 
 You then want to loop through the returned results and display them for example:
 ```php
@@ -59,7 +63,7 @@ You then want to loop through the returned results and display them for example:
 + Bb tag
 
 **You require the tag plugin for this bit to work!** and *'pages'* in this example are the *pages* you want to get *tags* for.  
-(See the [taglcoud plugin documentation](https://github.com/bastianallgeier/kirbycms-extensions/blob/master/plugins/tagcloud) for more information.)
+(See the [taglcoud plugin documentation](https://github.com/bastianallgeier/kirbycms-extensions/blob/master/plugins/tagcloud/tagcloud.php) for more information.)
 
 In your template call it like this:
 ```php
@@ -93,7 +97,9 @@ You can use any valid array element, so for tabs you can use also add **$item->r
         <?php echo $item->name().' ('.($item->results()).')'?>
         </a>
     </li>
-```	    
+```	  
+
+  
 ## Author
 Russ Baldwin  
 [shoesforindustry.net](shoesforindustry.net)
